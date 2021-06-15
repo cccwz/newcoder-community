@@ -40,6 +40,7 @@ public class HomeController {
                 map.put("post", post);
                 User user = userService.findUserById(post.getUserId());
                 map.put("user", user);
+                System.out.println(user.getEmail());
                 discussPosts.add(map);
             }
         }
