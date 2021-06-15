@@ -180,5 +180,11 @@ public class UserService implements CommunityConstant {
         redisTemplate.opsForValue().set(redisKey,loginTicket);*/
     }
 
+    public LoginTicket findLoginTicket(String ticket){
+        return loginTicketMapper.selectByTicket(ticket);
+        /*String redisKey = RedisKeyUtil.getTicketKey(ticket);
+        return (LoginTicket) redisTemplate.opsForValue().get(redisKey);*/
+    }
+
 
 }
