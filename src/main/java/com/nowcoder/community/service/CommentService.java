@@ -33,7 +33,7 @@ public class CommentService implements CommunityConstant {
         return commentMapper.selectCountByEntity(entityType, entityId) ;
     }
 
-    /*//声明事务  插入评论----修改评论数
+    //声明事务  插入评论----修改评论数
     @Transactional(isolation = Isolation.READ_COMMITTED,propagation = Propagation.REQUIRED)
     public int addComment(Comment comment){
         if(comment==null){
@@ -52,7 +52,7 @@ public class CommentService implements CommunityConstant {
 
     public Comment findCommentById(int id){
         return commentMapper.selectCommentByid(id);
-    }*/
+    }
 
 }
 
