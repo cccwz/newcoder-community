@@ -6,16 +6,14 @@ import java.util.Date;
 
 public class Comment {
     private int id;
-    private int userId;
-    private int entityType;
-    private int entityId;
-    private int targetId;
+    private int userId;//谁发布的
+    private int entityType;//评论的目标类别，1----帖子，2-----帖子的评论
+    private int entityId;//目标的id(帖子的评论的id)
+    private int targetId;//指向某个人的id
     private String content;
-    private int status;
+    private int status;//0---正常  1----拉黑
     private Date createTime;
 
-    public Comment() {
-    }
 
     public int getId() {
         return id;
