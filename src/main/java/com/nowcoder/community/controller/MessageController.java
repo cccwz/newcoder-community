@@ -59,9 +59,9 @@ public class MessageController implements CommunityConstant {
         //查询未读消息数量
         int letterUnreadCount=messageService.findLetterUnreadCount(user.getId(),null);
         model.addAttribute("letterUnreadCount",letterUnreadCount);
-        /*//查询未读通知
+        //查询未读通知
         int noticeUnreadCount=messageService.findNoticeUnreadCount(user.getId(),null);
-        model.addAttribute("noticeUnreadCount",noticeUnreadCount);*/
+        model.addAttribute("noticeUnreadCount",noticeUnreadCount);
         return "/site/letter";
     }
 
@@ -116,12 +116,12 @@ public class MessageController implements CommunityConstant {
         }
         return ids;
     }
-/*
+
     @RequestMapping(path = "/letter/send",method = RequestMethod.POST)
     @ResponseBody
     public String sendLetter(String toName,String content){
         User target = userService.findUserByName(toName);
-        if(content==null){
+        if(target==null){
             return CommunityUtil.getJSONString(1,"目标用户不存在");
         }
         Message message=new Message();
@@ -134,10 +134,11 @@ public class MessageController implements CommunityConstant {
         }
         message.setContent(content);
         message.setCreateTime(new Date());
-        messageService.addMessage(message);
+        /*int i =*/ messageService.addMessage(message);
+        /*System.out.println(i);*/
         return CommunityUtil.getJSONString(0);
     }
-
+    /*
     @RequestMapping(path = "/notice/list",method = RequestMethod.GET)
     public String getNoticeList(Model model){
         User user = hostHolder.getUser();
