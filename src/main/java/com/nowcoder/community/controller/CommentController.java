@@ -1,5 +1,6 @@
 package com.nowcoder.community.controller;
 
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.service.CommentService;
 import com.nowcoder.community.service.DiscussPostService;
@@ -31,6 +32,7 @@ public class CommentController implements CommunityConstant {
     /*@Autowired
     private RedisTemplate redisTemplate;*/
 
+    @LoginRequired
     @RequestMapping(value = "/add/{discussPostId}",method = RequestMethod.POST)
     public String addComment(@PathVariable("discussPostId")int discussPostId,
                              Comment comment){

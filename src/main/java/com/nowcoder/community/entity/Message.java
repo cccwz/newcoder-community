@@ -12,8 +12,7 @@ public class Message {
     private int status;//2----删除了
     private Date createTime;
 
-    public Message() {
-    }
+
 
     public int getId() {
         return id;
