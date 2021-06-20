@@ -96,7 +96,7 @@ public class UserController implements CommunityConstant {
         //根据filename去存储路径里找文件
         fileName=uploadPath+"/"+fileName;
         String suffix=fileName.substring(fileName.lastIndexOf("."));
-        System.out.println(suffix);
+//        System.out.println(suffix);
         response.setContentType("image/"+suffix);
         //输出
         try (FileInputStream fis=new FileInputStream(fileName);){
