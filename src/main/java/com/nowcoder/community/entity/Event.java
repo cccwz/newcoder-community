@@ -6,14 +6,11 @@ import java.util.Map;
 
 public class Event {
     private String topic;//主题
-    private int userId;//谁发的
+    private int userId;//谁发的，谁点赞的
     private int entityType;
     private int entityId;
-    private int entityUserId;
+    private int entityUserId;//这个实体的归属
     private Map<String,Object> data=new HashMap<>();
-
-    public Event() {
-    }
 
     public void setData(Map<String, Object> data) {
         this.data = data;

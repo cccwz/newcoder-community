@@ -138,7 +138,7 @@ public class MessageController implements CommunityConstant {
         /*System.out.println(i);*/
         return CommunityUtil.getJSONString(0);
     }
-    /*
+
     @RequestMapping(path = "/notice/list",method = RequestMethod.GET)
     public String getNoticeList(Model model){
         User user = hostHolder.getUser();
@@ -150,6 +150,7 @@ public class MessageController implements CommunityConstant {
         if(message!=null){
             messageVO.put("message",message);
             String content= HtmlUtils.htmlUnescape(message.getContent());
+            //字符串还原为对象
             Map<String ,Object> data = JSONObject.parseObject(content, HashMap.class);
             messageVO.put("user",userService.findUserById((Integer) data.get("userId")));
             messageVO.put("entityType",data.get("entityType"));
@@ -246,5 +247,5 @@ public class MessageController implements CommunityConstant {
             messageService.readMessage((ids));
         }
         return "/site/notice-detail";
-    }*/
+    }
 }
