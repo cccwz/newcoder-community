@@ -82,7 +82,7 @@ public class EventConsumer implements CommunityConstant {
         elasticSearchService.saveDiscussPost(post);
     }
 
-    //消费发帖事件
+    //消费删帖事件
     @KafkaListener(topics = {TOPIC_DELETE})
     public void handleDeleteMessage(ConsumerRecord record){
         if(record==null||record.value()==null){
