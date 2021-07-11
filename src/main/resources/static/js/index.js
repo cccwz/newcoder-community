@@ -1,3 +1,4 @@
+// 为id是publishBtn的绑定单击事件
 $(function(){
 	$("#publishBtn").click(publish);
 });
@@ -17,7 +18,9 @@ function publish() {
 	$.post(
 		CONTEXT_PATH+"/discuss/add",
 		{"title":title,"content":content},
+		//回调函数
 		function (data) {
+			//将JSON字符串转为与之对应的JavaScript对象。
 			data=$.parseJSON(data);
 			//在提示框中显示返回的消息
 			$("#hintBody").text(data.msg);
@@ -27,6 +30,7 @@ function publish() {
 				$("#hintModal").modal("hide");
 				//刷新页面
 				if(data.code==0){
+					//code==0说明成功
 					window.location.reload();
 				}
 			}, 2000);

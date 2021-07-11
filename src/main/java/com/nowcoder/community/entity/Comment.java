@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 public class Comment {
-    private int id;
+    private int id;//无意义自增主键
     private int userId;//谁发布的
     private int entityType;//评论的目标类别，1----帖子，2-----帖子的评论
     private int entityId;//目标的id(帖子的评论的id)

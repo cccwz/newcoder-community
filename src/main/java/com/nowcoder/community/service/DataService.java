@@ -1,8 +1,6 @@
 package com.nowcoder.community.service;
 
 import com.nowcoder.community.util.RedisKeyUtil;
-import io.lettuce.core.RedisURI;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -10,9 +8,7 @@ import org.springframework.data.redis.connection.RedisStringCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import sun.java2d.pipe.SpanShapeRenderer;
 
-import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,16 +29,18 @@ public class DataService {
         redisTemplate.opsForHyperLogLog().add(redisKey,ip);
     }
 
-    //统计置顶日期范围内的uv
+    //统计指定日期范围内的uv
     public long calculateUV(Date start,Date end){
         if(start==null||end==null){
             throw new IllegalArgumentException("参数不能为空");
         }
         //从开始日期遍历到结束日期的，得到一个key的集合
         List<String> keyList=new ArrayList<>();
+        //实例化
         Calendar calendar=Calendar.getInstance();
         calendar.setTime(start);
         //calendar中的时间小于不在end之后就一直循环
+        //getTime返回   Wed Feb 20 14:40:37 UTC 2019
         while (!calendar.getTime().after(end)){
             String key = RedisKeyUtil.getUVKey(df.format(calendar.getTime()));
             keyList.add(key);

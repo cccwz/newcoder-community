@@ -170,12 +170,12 @@ public class DiscussPostController implements CommunityConstant {
 
         //同步到elasticsearch
         //触发发帖事件
-        Event event=new Event()
+        /*Event event=new Event()
                 .setTopic(TOPIC_PUBLISH)
                 .setUserId(hostHolder.getUser().getId())
                 .setEntityType(ENTITY_TYPE_POST)
                 .setEntityId(id);
-        eventProducer.fireEvent(event);
+        eventProducer.fireEvent(event);*/
         return CommunityUtil.getJSONString(0);
     }
 
@@ -187,18 +187,18 @@ public class DiscussPostController implements CommunityConstant {
 
         //同步到elasticsearch
         //触发发帖事件
-        Event event=new Event()
+        /*Event event=new Event()
                 .setTopic(TOPIC_PUBLISH)
                 .setUserId(hostHolder.getUser().getId())
                 .setEntityType(ENTITY_TYPE_POST)
                 .setEntityId(id);
         eventProducer.fireEvent(event);
         String redisKey= RedisKeyUtil.getPostScoreKey();
-        redisTemplate.opsForSet().add(redisKey, id);
+        redisTemplate.opsForSet().add(redisKey, id);*/
         return CommunityUtil.getJSONString(0);
     }
 
-    //加精
+    //删除
     @RequestMapping(path = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public String setDelete(int id){

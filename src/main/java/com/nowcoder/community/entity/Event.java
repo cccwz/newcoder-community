@@ -7,9 +7,9 @@ import java.util.Map;
 public class Event {
     private String topic;//主题
     private int userId;//谁发的，谁点赞的
-    private int entityType;
-    private int entityId;
-    private int entityUserId;//这个实体的归属
+    private int entityType;//对x点赞或者评论--- x的种类
+    private int entityId;//x的id
+    private int entityUserId;//x的归属者---即系统要把消息发给谁
     private Map<String,Object> data=new HashMap<>();
 
     public void setData(Map<String, Object> data) {

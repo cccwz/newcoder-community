@@ -98,12 +98,15 @@ public class LoginController implements CommunityConstant {
 //        session.setAttribute("kaptcha",text);
 
         //验证码的归属
+        //随机生成一个字符串作为kaptcha归属者
+        //将这个随机字符串放入cookie中
         String kaptchaOwner= CommunityUtil.generateUUID();
         Cookie cookie=new Cookie("kaptchaOwner",kaptchaOwner);
         cookie.setMaxAge(60);
         cookie.setPath(contextPath);
         response.addCookie(cookie);
         //将验证码存入redis
+        //key是kaptcha:+kaptchawoner
         String redisKey= RedisKeyUtil.getKaptchaKey(kaptchaOwner);
         redisTemplate.opsForValue().set(redisKey,text,60, TimeUnit.SECONDS);
 

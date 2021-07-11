@@ -9,7 +9,7 @@ public class Message {
     private int toId;
     private String conversationId;
     private String content;
-    private int status;//2----删除了
+    private int status;//2----删除了  0--未读  1--已读
     private Date createTime;
 
 

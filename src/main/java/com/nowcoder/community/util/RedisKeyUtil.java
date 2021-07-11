@@ -47,6 +47,7 @@ public class RedisKeyUtil {
     }
 
     //登陆凭证
+    //tickrt:+随机字符串
     public static String getTicketKey(String ticket){
         return PREFIX_TICKET+SPLIT+ticket;
     }

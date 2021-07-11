@@ -20,8 +20,10 @@ import java.io.PrintWriter;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements CommunityConstant {
 
+
     @Override
     public void configure(WebSecurity web) throws Exception {
+        //忽略对静态资源的拦截
         web.ignoring().antMatchers("/resources/**");
     }
 

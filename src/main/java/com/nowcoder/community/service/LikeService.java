@@ -30,6 +30,7 @@ public class LikeService {
         }else {
             redisTemplate.opsForSet().add(entityLikeKey,userId);
         }*/
+        //放入redis的执行队列
         redisTemplate.execute(new SessionCallback() {
             @Override
             public Object execute(RedisOperations operations) throws DataAccessException {

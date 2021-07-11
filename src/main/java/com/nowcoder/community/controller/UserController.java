@@ -48,7 +48,6 @@ public class UserController implements CommunityConstant {
     @Autowired
     private HostHolder hostHolder;
 
-
     @Autowired
     private LikeService likeService;
 

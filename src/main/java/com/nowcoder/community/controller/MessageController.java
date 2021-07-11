@@ -40,8 +40,11 @@ public class MessageController implements CommunityConstant {
         page.setPath("/letter/list");
         page.setRows(messageService.findConversationCount(user.getId()));
         //会话列表
+        //选出了不重复的会话
         List<Message> conversationList =
                 messageService.findConversations(user.getId(), page.getOffset(), page.getLimit());
+
+        //对单个会话进行处理
         List<Map<String,Object>> conversations=new ArrayList<>();
         if(conversationList!=null){
             for(Message message:conversationList){
@@ -127,6 +130,7 @@ public class MessageController implements CommunityConstant {
         Message message=new Message();
         message.setFromId(hostHolder.getUser().getId());
         message.setToId(target.getId());
+        //conversationId是  小id_大id
         if(message.getFromId()<message.getToId()){
             message.setConversationId(message.getFromId()+"_"+message.getToId());
         }else {

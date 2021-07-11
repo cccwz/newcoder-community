@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 @ControllerAdvice(annotations = Controller.class)
 public class ExceptionAdvice {
     private final static Logger LOGGER= LoggerFactory.getLogger(ExceptionAdvice.class);
+
     @ExceptionHandler({Exception.class})
     public void handlerException(Exception e, HttpServletRequest request,
                                  HttpServletResponse response) throws IOException {

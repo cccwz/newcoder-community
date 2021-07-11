@@ -84,7 +84,7 @@ public class FollowController implements CommunityConstant {
         return "/site/followee";
     }
 
-    //关注了谁
+    //粉丝
     @RequestMapping(path = "/followers/{userId}" ,method = RequestMethod.GET)
     public  String  getFollowers(@PathVariable("userId")int userId, Page page, Model model){
         User user = userService.findUserById(userId);
@@ -96,7 +96,7 @@ public class FollowController implements CommunityConstant {
         page.setPath("/followers/"+userId);
         page.setRows((int) followService.findFollowerCount(ENTITY_TYPE_USER,userId));
 
-        List<Map<String, Object>> userList = followService.findFollowees(userId, page.getOffset(), page.getLimit());
+        List<Map<String, Object>> userList = followService.findFollowers(userId, page.getOffset(), page.getLimit());
         if(userList!=null){
             for(Map<String ,Object> map:userList){
                 User u= (User) map.get("user");

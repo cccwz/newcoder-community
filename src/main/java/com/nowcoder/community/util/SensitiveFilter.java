@@ -55,6 +55,7 @@ public class SensitiveFilter {
             tempNode=subNode;
 
             if(i==keyword.length()-1) {
+                //到了最后就修改结束标识
                 tempNode.setKeywordEnd(true);
             }
         }
@@ -74,12 +75,15 @@ public class SensitiveFilter {
         int begin=0;
         //指针3
         int position=0;
+
         //结果
         StringBuilder stringBuilder=new StringBuilder();
         while(position<text.length()){
             char c=text.charAt(position);
-            //跳过符号
+
+            //如果是特殊符号就在前缀树中继续判断
             if(isSymbol(c)){
+                //如果还没进入前缀树，就把begin位置向前推进一位
                 if(tempNode==rootNode){
                     stringBuilder.append(c);
                     begin++;
@@ -87,13 +91,16 @@ public class SensitiveFilter {
                 position++;
                 continue;
             }
+
+            //不是特殊符号
             tempNode=tempNode.getSubNode(c);
             if(tempNode==null){
-                //以begin开头的字符串不是敏感词
-                tempNode=rootNode;
-                stringBuilder.append(c);
-                begin++;
-                position++;
+                // 以begin开头的字符串不是敏感词
+                stringBuilder.append(text.charAt(begin));
+                // 进入下一个位置
+                position = ++begin;
+                // 重新指向根节点
+                tempNode = rootNode;
             }else if(tempNode.isKeywordEnd()){
                 stringBuilder.append(REPLACEMENT);
                 position++;

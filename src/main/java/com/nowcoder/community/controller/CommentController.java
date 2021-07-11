@@ -52,11 +52,14 @@ public class CommentController implements CommunityConstant {
                 .setEntityType(comment.getEntityType())
                 .setEntityId(comment.getEntityId())
                 .setData("postId",discussPostId);
+
         //判断评论的对象是帖子还是评论
         if(comment.getEntityType()==ENTITY_TYPE_POST){
+            //是帖子，就去找到帖子的发布者
             DiscussPost target = discussPostService.findDiscussPostById(comment.getEntityId());
             event.setEntityUserId(target.getUserId());
         }else if(comment.getEntityType()==ENTITY_TYPE_COMMENT){
+            //是评论就找评论的发布者
             Comment target = commentService.findCommentById(comment.getEntityId());
             event.setEntityUserId(target.getUserId());
         }
